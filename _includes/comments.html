@@ -1,6 +1,8 @@
 <!-- Comments System Component -->
+<!-- Debug: Comments enabled: {{ site.comments.enabled }}, Page comments: {{ page.comments }}, Provider: {{ site.comments.provider }} -->
 {% if site.comments.enabled and page.comments != false %}
 <div class="comments-section">
+  <!-- Debug: Comments section is rendering -->
   <div class="comments-header">
     {% if page.lang == 'ar' %}
       <h3 class="comments-title">التعليقات</h3>
@@ -120,15 +122,15 @@
   .comments-section {
     margin-top: 3rem;
   }
-  
+
   .comments-container {
     padding: 1rem;
   }
-  
+
   .comments-title {
     font-size: 1.5rem;
   }
-  
+
   .comments-description {
     font-size: 0.9rem;
   }
@@ -175,12 +177,12 @@ document.addEventListener('DOMContentLoaded', function() {
   if (giscusScript) {
     const isRTL = document.documentElement.dir === 'rtl' || document.documentElement.lang === 'ar';
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
+
     // Update theme based on preferences
     if (isRTL) {
       giscusScript.setAttribute('data-lang', 'ar');
     }
-    
+
     // Listen for theme changes
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
       const iframe = document.querySelector('iframe.giscus-frame');

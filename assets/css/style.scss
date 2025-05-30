@@ -275,24 +275,28 @@ html[lang="ar"] *,
   font-weight: 600;
 }
 
-/* Enhanced Tables - Simple and Responsive */
+/* Enhanced Tables - Proper Container Solution */
 .main-content table {
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-color);
   width: 100%;
-  max-width: 100%;
-  overflow-x: auto;
-  display: block;
-  white-space: nowrap;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
 }
 
-.main-content table thead,
-.main-content table tbody,
-.main-content table tr {
-  display: table;
-  width: 100%;
-  table-layout: fixed;
+/* Table wrapper for horizontal scroll */
+.table-responsive {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.table-responsive table {
+  margin: 0;
+  box-shadow: none;
+  border-radius: 0;
 }
 
 .main-content table th {
@@ -304,6 +308,7 @@ html[lang="ar"] *,
   letter-spacing: 0.05em;
   padding: 0.75rem;
   text-align: left;
+  white-space: nowrap;
 }
 
 .main-content table td {
@@ -316,25 +321,103 @@ html[lang="ar"] *,
   background: var(--bg-secondary);
 }
 
-/* Mobile Table Responsiveness */
+/* Auto-wrap tables in responsive container */
+.main-content table:not(.table-responsive table) {
+  overflow-x: auto;
+  display: block;
+  white-space: nowrap;
+}
+
+.main-content table:not(.table-responsive table) thead,
+.main-content table:not(.table-responsive table) tbody,
+.main-content table:not(.table-responsive table) tr {
+  display: table;
+  width: 100%;
+  table-layout: auto;
+}
+
+/* Mobile optimizations */
 @media (max-width: 768px) {
   .main-content table {
-    font-size: 0.8rem;
-    white-space: normal;
+    font-size: 0.75rem;
   }
 
   .main-content table th,
   .main-content table td {
     padding: 0.5rem 0.25rem;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 
-  /* Allow horizontal scroll on very small screens */
-  .main-content table {
-    min-width: 300px;
-    overflow-x: scroll;
-    -webkit-overflow-scrolling: touch;
+  .main-content table th {
+    font-size: 0.65rem;
   }
+
+  /* Ensure tables can scroll horizontally */
+  .main-content table,
+  .table-responsive {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  /* Custom scrollbar for tables */
+  .main-content table::-webkit-scrollbar,
+  .table-responsive::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .main-content table::-webkit-scrollbar-track,
+  .table-responsive::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 3px;
+  }
+
+  .main-content table::-webkit-scrollbar-thumb,
+  .table-responsive::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 3px;
+  }
+
+  .main-content table::-webkit-scrollbar-thumb:hover,
+  .table-responsive::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-gradient-end);
+  }
+}
+
+/* Scroll indicators for tables */
+.table-responsive.scrollable::before,
+.table-responsive.scrollable::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+.table-responsive.scrollable::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(255,255,255,0.8), transparent);
+  opacity: 0;
+}
+
+.table-responsive.scrollable::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(255,255,255,0.8), transparent);
+  opacity: 1;
+}
+
+.table-responsive.scrolled-start::before {
+  opacity: 1;
+}
+
+.table-responsive.scrolled-end::after {
+  opacity: 0;
+}
+
+.table-responsive {
+  position: relative;
 }
 
 /* Modern Blockquotes */
