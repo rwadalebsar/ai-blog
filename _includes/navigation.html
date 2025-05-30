@@ -1,16 +1,22 @@
 <nav class="main-nav">
   <div class="nav-container">
-    <a href="{{ '/' | relative_url }}" class="nav-logo">
-      <span class="nav-logo-text">{{ site.title }}</span>
-    </a>
+    {% if page.lang == 'ar' or site.lang == 'ar' %}
+      <a href="{{ '/ar/' | relative_url }}" class="nav-logo">
+        <span class="nav-logo-text">{{ site.title_ar | default: site.title }}</span>
+      </a>
+    {% else %}
+      <a href="{{ '/' | relative_url }}" class="nav-logo">
+        <span class="nav-logo-text">{{ site.title_en | default: site.title }}</span>
+      </a>
+    {% endif %}
 
     <div class="nav-links">
       {% if page.lang == 'ar' or site.lang == 'ar' %}
-        <a href="{{ '/' | relative_url }}" class="nav-link {% if page.url == '/' %}active{% endif %}">الرئيسية</a>
-        <a href="{{ '/about' | relative_url }}" class="nav-link {% if page.url == '/about/' %}active{% endif %}">حول</a>
-        <a href="{{ '/blog' | relative_url }}" class="nav-link {% if page.url contains '/blog' %}active{% endif %}">المدونة</a>
-        <a href="{{ '/resources' | relative_url }}" class="nav-link {% if page.url == '/resources/' %}active{% endif %}">الموارد</a>
-        <a href="{{ '/contact' | relative_url }}" class="nav-link {% if page.url == '/contact/' %}active{% endif %}">اتصل بنا</a>
+        <a href="{{ '/ar/' | relative_url }}" class="nav-link {% if page.url == '/ar/' or page.url == '/ar/index.html' %}active{% endif %}">الرئيسية</a>
+        <a href="{{ '/ar/about' | relative_url }}" class="nav-link {% if page.url == '/ar/about/' or page.url == '/ar/about.html' %}active{% endif %}">حول</a>
+        <a href="{{ '/ar/blog' | relative_url }}" class="nav-link {% if page.url contains '/ar/blog' %}active{% endif %}">المدونة</a>
+        <a href="{{ '/ar/resources' | relative_url }}" class="nav-link {% if page.url == '/ar/resources/' or page.url == '/ar/resources.html' %}active{% endif %}">الموارد</a>
+        <a href="{{ '/ar/contact' | relative_url }}" class="nav-link {% if page.url == '/ar/contact/' or page.url == '/ar/contact.html' %}active{% endif %}">اتصل بنا</a>
       {% else %}
         <a href="{{ '/' | relative_url }}" class="nav-link {% if page.url == '/' %}active{% endif %}">Home</a>
         <a href="{{ '/about' | relative_url }}" class="nav-link {% if page.url == '/about/' %}active{% endif %}">About</a>

@@ -5,8 +5,8 @@
 <div class="language-toggle-container">
   {% if current_lang == "ar" %}
     <!-- Switch to English -->
-    {% assign en_url = current_url | replace: '/ar/', '/' %}
-    {% if en_url == current_url %}
+    {% assign en_url = current_url | replace: '/ar/', '/' | replace: '/ar', '/' %}
+    {% if en_url == current_url or en_url == '/ar' %}
       {% assign en_url = '/' %}
     {% endif %}
     <a href="{{ en_url | relative_url }}" class="language-toggle" title="Switch to English">
@@ -17,6 +17,14 @@
     <!-- Switch to Arabic -->
     {% if current_url == '/' %}
       {% assign ar_url = '/ar/' %}
+    {% elsif current_url == '/about/' or current_url == '/about' %}
+      {% assign ar_url = '/ar/about' %}
+    {% elsif current_url == '/blog/' or current_url == '/blog' %}
+      {% assign ar_url = '/ar/blog' %}
+    {% elsif current_url == '/resources/' or current_url == '/resources' %}
+      {% assign ar_url = '/ar/resources' %}
+    {% elsif current_url == '/contact/' or current_url == '/contact' %}
+      {% assign ar_url = '/ar/contact' %}
     {% else %}
       {% assign ar_url = '/ar' | append: current_url %}
     {% endif %}
@@ -87,17 +95,17 @@
     top: 0.5rem;
     right: 0.5rem;
   }
-  
+
   [dir="rtl"] .language-toggle-container {
     right: auto;
     left: 0.5rem;
   }
-  
+
   .language-toggle {
     padding: 0.375rem 0.75rem;
     font-size: 0.8rem;
   }
-  
+
   .lang-flag {
     font-size: 0.875rem;
   }
@@ -122,12 +130,12 @@ document.addEventListener('DOMContentLoaded', function() {
       localStorage.setItem('preferred-language', targetLang);
     });
   }
-  
+
   // Auto-redirect based on browser language (optional)
   const preferredLang = localStorage.getItem('preferred-language');
   const browserLang = navigator.language || navigator.userLanguage;
   const currentPath = window.location.pathname;
-  
+
   // Only auto-redirect on first visit to homepage
   if (!preferredLang && currentPath === '/' && browserLang.startsWith('ar')) {
     // Uncomment the next line to enable auto-redirect to Arabic
