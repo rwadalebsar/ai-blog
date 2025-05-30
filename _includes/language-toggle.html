@@ -1,0 +1,137 @@
+<!-- Language Toggle Component -->
+{% assign current_lang = page.lang | default: site.lang | default: "en" %}
+{% assign current_url = page.url %}
+
+<div class="language-toggle-container">
+  {% if current_lang == "ar" %}
+    <!-- Switch to English -->
+    {% assign en_url = current_url | replace: '/ar/', '/' %}
+    {% if en_url == current_url %}
+      {% assign en_url = '/' %}
+    {% endif %}
+    <a href="{{ en_url | relative_url }}" class="language-toggle" title="Switch to English">
+      <span class="lang-flag">🇺🇸</span>
+      <span class="lang-text">English</span>
+    </a>
+  {% else %}
+    <!-- Switch to Arabic -->
+    {% if current_url == '/' %}
+      {% assign ar_url = '/ar/' %}
+    {% else %}
+      {% assign ar_url = '/ar' | append: current_url %}
+    {% endif %}
+    <a href="{{ ar_url | relative_url }}" class="language-toggle" title="التبديل إلى العربية">
+      <span class="lang-flag">🇸🇦</span>
+      <span class="lang-text">العربية</span>
+    </a>
+  {% endif %}
+</div>
+
+<style>
+.language-toggle-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1001;
+}
+
+.language-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-primary);
+  border: 2px solid var(--accent-color);
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 0.875rem;
+}
+
+.language-toggle:hover {
+  background: var(--accent-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-bottom-color: var(--accent-color);
+}
+
+.lang-flag {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.lang-text {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* RTL adjustments */
+[dir="rtl"] .language-toggle-container {
+  right: auto;
+  left: 1rem;
+}
+
+[dir="rtl"] .language-toggle {
+  flex-direction: row-reverse;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .language-toggle-container {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+  
+  [dir="rtl"] .language-toggle-container {
+    right: auto;
+    left: 0.5rem;
+  }
+  
+  .language-toggle {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.8rem;
+  }
+  
+  .lang-flag {
+    font-size: 0.875rem;
+  }
+}
+
+/* Ensure it doesn't interfere with navigation */
+@media (max-width: 768px) {
+  .main-nav .nav-links.active ~ .language-toggle-container {
+    top: 4.5rem;
+  }
+}
+</style>
+
+<script>
+// Simple language detection and persistence
+document.addEventListener('DOMContentLoaded', function() {
+  // Store language preference
+  const languageToggle = document.querySelector('.language-toggle');
+  if (languageToggle) {
+    languageToggle.addEventListener('click', function(e) {
+      const targetLang = this.href.includes('/ar/') ? 'ar' : 'en';
+      localStorage.setItem('preferred-language', targetLang);
+    });
+  }
+  
+  // Auto-redirect based on browser language (optional)
+  const preferredLang = localStorage.getItem('preferred-language');
+  const browserLang = navigator.language || navigator.userLanguage;
+  const currentPath = window.location.pathname;
+  
+  // Only auto-redirect on first visit to homepage
+  if (!preferredLang && currentPath === '/' && browserLang.startsWith('ar')) {
+    // Uncomment the next line to enable auto-redirect to Arabic
+    // window.location.href = '/ar/';
+  }
+});
+</script>

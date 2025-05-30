@@ -1,25 +1,43 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
+{% assign page_lang = page.lang | default: site.lang | default: "en" %}
+{% assign page_dir = "ltr" %}
+{% if page_lang == "ar" %}
+  {% assign page_dir = "rtl" %}
+{% endif %}
+<html lang="{{ page_lang }}" dir="{{ page_dir }}">
   <head>
     <meta charset="UTF-8">
 
 {% seo %}
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
+    <!-- Arabic Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" as="style" type="text/css" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" as="style" type="text/css" crossorigin>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     {% include head-custom.html %}
   </head>
-  <body>
+  <body lang="{{ page_lang }}" dir="{{ page_dir }}"{% if page_lang == "ar" %} class="rtl"{% endif %}>
     <a id="skip-to-content" href="#content">Skip to the content.</a>
 
     {% include navigation.html %}
 
+    <!-- Language Toggle Component -->
+    {% include language-toggle.html %}
+
     <header class="page-header" role="banner">
-      <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
-      <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
+      {% if page_lang == "ar" %}
+        <h1 class="project-name">{{ page.title_ar | default: site.title_ar | default: page.title | default: site.title | default: site.github.repository_name }}</h1>
+        <h2 class="project-tagline">{{ page.description_ar | default: site.description_ar | default: page.description | default: site.description | default: site.github.project_tagline }}</h2>
+      {% else %}
+        <h1 class="project-name">{{ page.title | default: site.title_en | default: site.title | default: site.github.repository_name }}</h1>
+        <h2 class="project-tagline">{{ page.description | default: site.description_en | default: site.description | default: site.github.project_tagline }}</h2>
+      {% endif %}
       {% if site.github.is_project_page %}
         <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
       {% endif %}

@@ -20,6 +20,21 @@ lang: en-US
 timezone: UTC
 permalink: /:year/:month/:day/:title/
 
+# Multi-language support
+languages: ["en", "ar"]
+default_lang: "en"
+exclude_from_localization: ["javascript", "images", "css", "assets"]
+
+# Arabic/RTL specific settings
+rtl_support: true
+arabic_font: "Noto Sans Arabic, Amiri, Arial, sans-serif"
+
+# Language-specific titles and descriptions
+title_en: "AI Blog"
+title_ar: "مدونة الذكاء الاصطناعي"
+description_en: "Exploring the frontiers of artificial intelligence, machine learning, and emerging technologies."
+description_ar: "استكشاف آفاق الذكاء الاصطناعي والتعلم الآلي والتقنيات الناشئة."
+
 # Build settings
 markdown: kramdown
 highlighter: rouge
