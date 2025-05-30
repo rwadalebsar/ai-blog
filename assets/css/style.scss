@@ -607,19 +607,24 @@ html {
     padding: 0 1rem;
   }
 
-  /* Fix language toggle position on mobile to avoid menu overlap */
+  /* Fix language toggle position on mobile to avoid title and menu overlap */
   .language-toggle {
-    top: 0.5rem;
-    left: 0.5rem; /* Move to left side on mobile */
-    right: auto;
-    padding: 0.375rem 0.75rem;
+    position: fixed;
+    top: auto;
+    bottom: 2rem; /* Position at bottom of screen */
+    right: 1rem; /* Bottom-right corner */
+    left: auto;
+    transform: none;
+    padding: 0.5rem 1rem;
     font-size: 0.875rem;
-    z-index: 1002; /* Higher than menu */
+    z-index: 1002;
+    border-radius: 2rem; /* More rounded for floating button look */
+    box-shadow: var(--shadow-lg); /* Stronger shadow for floating effect */
   }
 
   [dir="rtl"] .language-toggle {
-    left: auto;
-    right: 0.5rem; /* Move to right side for RTL on mobile */
+    right: auto;
+    left: 1rem; /* Bottom-left corner for RTL */
   }
 }
 
