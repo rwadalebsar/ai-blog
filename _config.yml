@@ -4,6 +4,10 @@ show_downloads: false
 google_analytics:
 theme: jekyll-theme-cayman
 
+# Override GitHub settings to remove "View on GitHub" button
+github:
+  is_project_page: false
+
 # SEO and Social Media
 author: Your Name
 twitter:

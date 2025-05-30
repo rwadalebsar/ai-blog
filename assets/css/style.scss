@@ -420,6 +420,19 @@ html[lang="ar"] *,
   position: relative;
 }
 
+/* Hide GitHub buttons and references */
+.btn[href*="github.com"],
+a[href*="github.com"]:contains("View on GitHub"),
+a[href*="github.com"]:contains("GitHub"),
+.site-footer-owner {
+  display: none !important;
+}
+
+/* Hide any remaining GitHub project page elements */
+.page-header .btn[href*="github"] {
+  display: none !important;
+}
+
 /* Modern Blockquotes */
 .main-content blockquote {
   border-left: 4px solid var(--accent-color);
