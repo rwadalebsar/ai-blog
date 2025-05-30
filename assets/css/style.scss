@@ -275,14 +275,24 @@ html[lang="ar"] *,
   font-weight: 600;
 }
 
-/* Enhanced Tables */
+/* Enhanced Tables - Simple and Responsive */
 .main-content table {
   border-radius: var(--border-radius);
-  overflow: hidden;
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-color);
   width: 100%;
   max-width: 100%;
+  overflow-x: auto;
+  display: block;
+  white-space: nowrap;
+}
+
+.main-content table thead,
+.main-content table tbody,
+.main-content table tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
 }
 
 .main-content table th {
@@ -292,90 +302,38 @@ html[lang="ar"] *,
   text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 0.05em;
+  padding: 0.75rem;
+  text-align: left;
 }
 
 .main-content table td {
   border-color: var(--border-color);
+  padding: 0.75rem;
+  text-align: left;
 }
 
 .main-content table tr:hover {
   background: var(--bg-secondary);
 }
 
-/* Responsive Table Wrapper */
-.table-wrapper {
-  overflow-x: auto;
-  margin: 1.5rem 0;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-sm);
-}
-
-.main-content table {
-  margin: 0;
-  min-width: 600px; /* Minimum width for proper table display */
-}
-
-/* Auto-wrap tables that aren't already wrapped */
-.main-content table:not(.table-wrapper table) {
-  display: block;
-  overflow-x: auto;
-  white-space: nowrap;
-  margin: 1.5rem 0;
-}
-
-/* Mobile Table Styles */
+/* Mobile Table Responsiveness */
 @media (max-width: 768px) {
   .main-content table {
-    font-size: 0.875rem;
-    border: 0;
-    border-radius: 0;
-    box-shadow: none;
+    font-size: 0.8rem;
+    white-space: normal;
   }
 
-  .main-content table thead {
-    display: none;
-  }
-
-  .main-content table tr {
-    display: block;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    margin-bottom: 1rem;
-    padding: 1rem;
-    background: var(--bg-secondary);
-    box-shadow: var(--shadow-sm);
-  }
-
+  .main-content table th,
   .main-content table td {
-    display: block;
-    text-align: right;
-    border: none;
-    padding: 0.5rem 0;
-    position: relative;
-    padding-left: 50%;
+    padding: 0.5rem 0.25rem;
+    font-size: 0.75rem;
   }
 
-  .main-content table td:before {
-    content: attr(data-label) ": ";
-    position: absolute;
-    left: 0;
-    width: 45%;
-    text-align: left;
-    font-weight: 600;
-    color: var(--text-primary);
-  }
-
-  /* RTL Mobile Tables */
-  [dir="rtl"] .main-content table td {
-    text-align: left;
-    padding-right: 50%;
-    padding-left: 0;
-  }
-
-  [dir="rtl"] .main-content table td:before {
-    right: 0;
-    left: auto;
-    text-align: right;
+  /* Allow horizontal scroll on very small screens */
+  .main-content table {
+    min-width: 300px;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
