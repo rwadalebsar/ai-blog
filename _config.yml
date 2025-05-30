@@ -61,9 +61,9 @@ comments:
   provider: "giscus" # Using Giscus (GitHub Discussions)
   giscus:
     repo: "rwadalebsar/ai-blog"
-    repo_id: "R_kgDONJXXXX" # Will be updated with actual repo ID
-    category: "Comments"
-    category_id: "DIC_kwDONJXXXX" # Will be updated with actual category ID
+    repo_id: "R_kgDOOzHDkg"
+    category: "comments"
+    category_id: "DIC_kwDOOzHDks4Cqy57"
     mapping: "pathname"
     reactions_enabled: true
     emit_metadata: false
