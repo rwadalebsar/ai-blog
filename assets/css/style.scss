@@ -1,6 +1,11 @@
 ---
 ---
 
+/* Arabic Font Imports - Must be at the top */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap');
+
 @import 'jekyll-theme-cayman';
 
 /* Modern Enhancements */
@@ -37,8 +42,10 @@ body {
 /* Arabic Typography */
 body[lang="ar"],
 body[dir="rtl"],
-.rtl {
-  font-family: 'Cairo', 'Tajawal', 'IBM Plex Sans Arabic', 'Segoe UI', 'Tahoma', sans-serif;
+.rtl,
+html[lang="ar"] body,
+html[dir="rtl"] body {
+  font-family: 'Cairo', 'Tajawal', 'IBM Plex Sans Arabic', 'Segoe UI', 'Tahoma', sans-serif !important;
   direction: rtl;
   text-align: right;
   line-height: 1.7; /* Optimized for Arabic text */
@@ -60,38 +67,54 @@ body[dir="rtl"],
 }
 
 /* Arabic Headings Enhancement */
+html[lang="ar"] .main-content h1,
+html[lang="ar"] .main-content h2,
+html[lang="ar"] .main-content h3,
+html[lang="ar"] .main-content h4,
+html[lang="ar"] .main-content h5,
+html[lang="ar"] .main-content h6,
 [dir="rtl"] .main-content h1,
 [dir="rtl"] .main-content h2,
 [dir="rtl"] .main-content h3,
 [dir="rtl"] .main-content h4,
 [dir="rtl"] .main-content h5,
 [dir="rtl"] .main-content h6 {
-  font-family: 'Cairo', 'Tajawal', sans-serif;
+  font-family: 'Cairo', 'Tajawal', sans-serif !important;
   font-weight: 700;
   letter-spacing: 0; /* Remove negative letter spacing for Arabic */
 }
 
+html[lang="ar"] .project-name,
 [dir="rtl"] .project-name {
-  font-family: 'Cairo', 'Tajawal', sans-serif;
+  font-family: 'Cairo', 'Tajawal', sans-serif !important;
   font-weight: 800;
   letter-spacing: 0;
 }
 
+html[lang="ar"] .project-tagline,
 [dir="rtl"] .project-tagline {
-  font-family: 'Cairo', 'Tajawal', sans-serif;
+  font-family: 'Cairo', 'Tajawal', sans-serif !important;
   font-weight: 500;
   letter-spacing: 0;
 }
 
 /* Arabic Navigation */
+html[lang="ar"] .nav-link,
 [dir="rtl"] .nav-link {
-  font-family: 'Cairo', 'Tajawal', sans-serif;
+  font-family: 'Cairo', 'Tajawal', sans-serif !important;
   font-weight: 500;
 }
 
+html[lang="ar"] .nav-logo-text,
 [dir="rtl"] .nav-logo-text {
-  font-family: 'Cairo', 'Tajawal', sans-serif;
+  font-family: 'Cairo', 'Tajawal', sans-serif !important;
   font-weight: 700;
+}
+
+/* Force Arabic fonts on all text elements */
+html[lang="ar"] *,
+[dir="rtl"] * {
+  font-family: 'Cairo', 'Tajawal', 'IBM Plex Sans Arabic', sans-serif !important;
 }
 
 /* Enhanced Header with Modern Gradient */
@@ -491,10 +514,7 @@ html {
   left: 1rem;
 }
 
-/* Arabic Font Loading */
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap');
+/* Arabic Font Loading - Moved to top of file */
 
 /* RTL Responsive Adjustments */
 @media (max-width: 768px) {
