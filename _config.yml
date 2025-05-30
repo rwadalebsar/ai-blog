@@ -27,8 +27,8 @@ exclude_from_localization: ["javascript", "images", "css", "assets"]
 
 # Arabic/RTL specific settings
 rtl_support: true
-arabic_font: "Almarai, Rubik, IBM Plex Sans Arabic, sans-serif"
-css_version: "v2.2" # For cache busting
+arabic_font: "Amiri, Scheherazade New, Reem Kufi, serif"
+css_version: "v2.3" # For cache busting
 
 # Language-specific titles and descriptions
 title_en: "AI Blog"
