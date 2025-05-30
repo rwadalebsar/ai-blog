@@ -1,10 +1,11 @@
 ---
-layout: default
+layout: post
 title: "Welcome to AI Blog: Your Gateway to Artificial Intelligence"
 date: 2024-01-15
 categories: [announcement, introduction]
 tags: [ai, machine-learning, blog, community]
 excerpt: "Welcome to AI Blog! We're excited to launch this platform dedicated to exploring artificial intelligence, machine learning, and emerging technologies. Join us on this journey of discovery and learning."
+comments: true
 ---
 
 # Welcome to AI Blog: Your Gateway to Artificial Intelligence

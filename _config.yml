@@ -55,6 +55,22 @@ plugins:
   - jekyll-sitemap
   - jekyll-feed
 
+# Comments System Configuration
+comments:
+  enabled: true
+  provider: "giscus" # Using Giscus (GitHub Discussions)
+  giscus:
+    repo: "rwadalebsar/ai-blog"
+    repo_id: "R_kgDONJXXXX" # Will be updated with actual repo ID
+    category: "Comments"
+    category_id: "DIC_kwDONJXXXX" # Will be updated with actual category ID
+    mapping: "pathname"
+    reactions_enabled: true
+    emit_metadata: false
+    input_position: "bottom"
+    theme: "preferred_color_scheme"
+    lang: "en"
+
 # Exclude from processing
 exclude:
   - Gemfile

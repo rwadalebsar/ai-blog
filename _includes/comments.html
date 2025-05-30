@@ -1,0 +1,197 @@
+<!-- Comments System Component -->
+{% if site.comments.enabled and page.comments != false %}
+<div class="comments-section">
+  <div class="comments-header">
+    {% if page.lang == 'ar' %}
+      <h3 class="comments-title">التعليقات</h3>
+      <p class="comments-description">شاركوا آراءكم وأفكاركم حول هذا المقال</p>
+    {% else %}
+      <h3 class="comments-title">Comments</h3>
+      <p class="comments-description">Share your thoughts and feedback about this article</p>
+    {% endif %}
+  </div>
+
+  <div class="comments-container">
+    {% if site.comments.provider == "giscus" %}
+      <!-- Giscus Comments -->
+      <script src="https://giscus.app/client.js"
+              data-repo="{{ site.comments.giscus.repo }}"
+              data-repo-id="{{ site.comments.giscus.repo_id }}"
+              data-category="{{ site.comments.giscus.category }}"
+              data-category-id="{{ site.comments.giscus.category_id }}"
+              data-mapping="{{ site.comments.giscus.mapping }}"
+              data-strict="0"
+              data-reactions-enabled="{{ site.comments.giscus.reactions_enabled }}"
+              data-emit-metadata="{{ site.comments.giscus.emit_metadata }}"
+              data-input-position="{{ site.comments.giscus.input_position }}"
+              data-theme="{{ site.comments.giscus.theme }}"
+              data-lang="{% if page.lang == 'ar' %}ar{% else %}{{ site.comments.giscus.lang }}{% endif %}"
+              data-loading="lazy"
+              crossorigin="anonymous"
+              async>
+      </script>
+    {% endif %}
+  </div>
+
+  <!-- Fallback for when JavaScript is disabled -->
+  <noscript>
+    <div class="comments-fallback">
+      {% if page.lang == 'ar' %}
+        <p>لعرض التعليقات، يرجى تفعيل JavaScript في متصفحكم.</p>
+        <p>يمكنكم أيضاً <a href="https://github.com/{{ site.comments.giscus.repo }}/discussions" target="_blank">زيارة صفحة النقاشات على GitHub</a> للمشاركة.</p>
+      {% else %}
+        <p>To view comments, please enable JavaScript in your browser.</p>
+        <p>You can also <a href="https://github.com/{{ site.comments.giscus.repo }}/discussions" target="_blank">visit the discussions on GitHub</a> to participate.</p>
+      {% endif %}
+    </div>
+  </noscript>
+</div>
+
+<style>
+.comments-section {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--border-color);
+}
+
+.comments-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.comments-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.comments-description {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.comments-container {
+  background: var(--bg-primary);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+}
+
+.comments-fallback {
+  text-align: center;
+  padding: 2rem;
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius);
+  color: var(--text-secondary);
+}
+
+.comments-fallback a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.comments-fallback a:hover {
+  text-decoration: underline;
+}
+
+/* RTL Support for Comments */
+[dir="rtl"] .comments-section {
+  text-align: right;
+}
+
+[dir="rtl"] .comments-header {
+  text-align: center;
+}
+
+[dir="rtl"] .comments-title {
+  font-family: 'Amiri', 'Scheherazade New', serif !important;
+}
+
+[dir="rtl"] .comments-description {
+  font-family: 'Amiri', 'Scheherazade New', serif !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .comments-section {
+    margin-top: 3rem;
+  }
+  
+  .comments-container {
+    padding: 1rem;
+  }
+  
+  .comments-title {
+    font-size: 1.5rem;
+  }
+  
+  .comments-description {
+    font-size: 0.9rem;
+  }
+}
+
+/* Dark Mode Support for Giscus */
+@media (prefers-color-scheme: dark) {
+  .comments-container {
+    background: #1a1a1a;
+    border-color: #333;
+  }
+}
+
+/* Loading State */
+.comments-container:empty::before {
+  content: "Loading comments...";
+  display: block;
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 2rem;
+}
+
+[dir="rtl"] .comments-container:empty::before {
+  content: "جاري تحميل التعليقات...";
+}
+
+/* Custom Giscus Styling */
+.giscus {
+  width: 100% !important;
+}
+
+.giscus-frame {
+  border-radius: var(--border-radius) !important;
+  border: none !important;
+}
+</style>
+
+<!-- Initialize comments theme based on page language and direction -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Set Giscus theme based on page language and user preference
+  const giscusScript = document.querySelector('script[src="https://giscus.app/client.js"]');
+  if (giscusScript) {
+    const isRTL = document.documentElement.dir === 'rtl' || document.documentElement.lang === 'ar';
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Update theme based on preferences
+    if (isRTL) {
+      giscusScript.setAttribute('data-lang', 'ar');
+    }
+    
+    // Listen for theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      const iframe = document.querySelector('iframe.giscus-frame');
+      if (iframe) {
+        const theme = e.matches ? 'dark' : 'light';
+        iframe.contentWindow.postMessage({
+          giscus: { setConfig: { theme: theme } }
+        }, 'https://giscus.app');
+      }
+    });
+  }
+});
+</script>
+{% endif %}
