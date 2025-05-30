@@ -433,13 +433,16 @@ a[href*="github.com"]:contains("GitHub"),
   display: none !important;
 }
 
-/* Modern Footer Styling */
+/* Modern Footer Styling - Full Width Like Header */
 .modern-footer {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  background: linear-gradient(120deg, #155799 0%, #159957 100%);
   color: #ffffff;
   margin-top: 4rem;
   position: relative;
   overflow: hidden;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
 }
 
 .modern-footer::before {
@@ -457,9 +460,28 @@ a[href*="github.com"]:contains("GitHub"),
 .footer-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 3rem 2rem 1rem;
+  padding: 4rem 2rem 2rem;
   position: relative;
   z-index: 1;
+}
+
+/* Responsive footer padding to match header */
+@media screen and (min-width: 64em) {
+  .footer-content {
+    padding: 5rem 4rem 3rem;
+  }
+}
+
+@media screen and (min-width: 42em) and (max-width: 64em) {
+  .footer-content {
+    padding: 4rem 3rem 2rem;
+  }
+}
+
+@media screen and (max-width: 42em) {
+  .footer-content {
+    padding: 3rem 1rem 1.5rem;
+  }
 }
 
 .footer-sections {
@@ -664,12 +686,8 @@ a[href*="github.com"]:contains("GitHub"),
   }
 }
 
-/* Responsive Footer */
+/* Responsive Footer - Updated to match header responsiveness */
 @media (max-width: 768px) {
-  .footer-content {
-    padding: 2rem 1rem 1rem;
-  }
-
   .footer-sections {
     grid-template-columns: 1fr;
     gap: 2rem;
