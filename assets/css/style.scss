@@ -38,10 +38,11 @@ body {
 body[lang="ar"],
 body[dir="rtl"],
 .rtl {
-  font-family: 'Noto Sans Arabic', 'Amiri', 'Tahoma', 'Arial Unicode MS', sans-serif;
+  font-family: 'Cairo', 'Tajawal', 'IBM Plex Sans Arabic', 'Segoe UI', 'Tahoma', sans-serif;
   direction: rtl;
   text-align: right;
-  line-height: 1.8; /* Better for Arabic text */
+  line-height: 1.7; /* Optimized for Arabic text */
+  font-weight: 400;
 }
 
 /* RTL Layout Adjustments */
@@ -56,6 +57,41 @@ body[dir="rtl"],
 
 [dir="rtl"] .page-header {
   text-align: center; /* Keep header centered */
+}
+
+/* Arabic Headings Enhancement */
+[dir="rtl"] .main-content h1,
+[dir="rtl"] .main-content h2,
+[dir="rtl"] .main-content h3,
+[dir="rtl"] .main-content h4,
+[dir="rtl"] .main-content h5,
+[dir="rtl"] .main-content h6 {
+  font-family: 'Cairo', 'Tajawal', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0; /* Remove negative letter spacing for Arabic */
+}
+
+[dir="rtl"] .project-name {
+  font-family: 'Cairo', 'Tajawal', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+[dir="rtl"] .project-tagline {
+  font-family: 'Cairo', 'Tajawal', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+/* Arabic Navigation */
+[dir="rtl"] .nav-link {
+  font-family: 'Cairo', 'Tajawal', sans-serif;
+  font-weight: 500;
+}
+
+[dir="rtl"] .nav-logo-text {
+  font-family: 'Cairo', 'Tajawal', sans-serif;
+  font-weight: 700;
 }
 
 /* Enhanced Header with Modern Gradient */
@@ -456,8 +492,9 @@ html {
 }
 
 /* Arabic Font Loading */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap');
 
 /* RTL Responsive Adjustments */
 @media (max-width: 768px) {
@@ -504,3 +541,53 @@ html {
   display: inline-block;
   text-align: right;
 }
+
+/* Alternative Arabic Font Options (uncomment to use) */
+
+/* Option 1: Almarai - Clean and Modern */
+/*
+[dir="rtl"] body,
+[dir="rtl"] .main-content h1,
+[dir="rtl"] .main-content h2,
+[dir="rtl"] .main-content h3,
+[dir="rtl"] .project-name,
+[dir="rtl"] .nav-link {
+  font-family: 'Almarai', 'Cairo', sans-serif !important;
+}
+*/
+
+/* Option 2: Amiri - Traditional and Elegant */
+/*
+[dir="rtl"] body,
+[dir="rtl"] .main-content h1,
+[dir="rtl"] .main-content h2,
+[dir="rtl"] .main-content h3,
+[dir="rtl"] .project-name,
+[dir="rtl"] .nav-link {
+  font-family: 'Amiri', 'Cairo', serif !important;
+}
+*/
+
+/* Option 3: Rubik - Rounded and Friendly */
+/*
+[dir="rtl"] body,
+[dir="rtl"] .main-content h1,
+[dir="rtl"] .main-content h2,
+[dir="rtl"] .main-content h3,
+[dir="rtl"] .project-name,
+[dir="rtl"] .nav-link {
+  font-family: 'Rubik', 'Cairo', sans-serif !important;
+}
+*/
+
+/* Option 4: Noto Sans Arabic - Google Universal */
+/*
+[dir="rtl"] body,
+[dir="rtl"] .main-content h1,
+[dir="rtl"] .main-content h2,
+[dir="rtl"] .main-content h3,
+[dir="rtl"] .project-name,
+[dir="rtl"] .nav-link {
+  font-family: 'Noto Sans Arabic', 'Cairo', sans-serif !important;
+}
+*/
