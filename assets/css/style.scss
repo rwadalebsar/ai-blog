@@ -1,12 +1,13 @@
 ---
 ---
 
-/* Arabic Font Imports - Must be at the top */
+/* Import theme first */
+@import 'jekyll-theme-cayman';
+
+/* Arabic Font Imports - After theme import to override */
 @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap');
-
-@import 'jekyll-theme-cayman';
 
 /* Modern Enhancements */
 
@@ -611,3 +612,41 @@ html {
   font-family: 'Noto Sans Arabic', 'Cairo', sans-serif !important;
 }
 */
+
+/* FINAL ARABIC FONT OVERRIDE - Must be at the end */
+html[lang="ar"],
+html[lang="ar"] *,
+html[dir="rtl"],
+html[dir="rtl"] *,
+body[lang="ar"],
+body[lang="ar"] *,
+body[dir="rtl"],
+body[dir="rtl"] *,
+.rtl,
+.rtl * {
+  font-family: 'Almarai', 'Rubik', 'IBM Plex Sans Arabic', 'Segoe UI', 'Tahoma', sans-serif !important;
+}
+
+/* Specific overrides for common elements */
+html[lang="ar"] .main-content,
+html[lang="ar"] .main-content *,
+html[dir="rtl"] .main-content,
+html[dir="rtl"] .main-content *,
+html[lang="ar"] .page-header,
+html[lang="ar"] .page-header *,
+html[dir="rtl"] .page-header,
+html[dir="rtl"] .page-header *,
+html[lang="ar"] .nav-container,
+html[lang="ar"] .nav-container *,
+html[dir="rtl"] .nav-container,
+html[dir="rtl"] .nav-container * {
+  font-family: 'Almarai', 'Rubik', 'IBM Plex Sans Arabic', sans-serif !important;
+}
+
+/* Force font on specific text elements */
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3, html[lang="ar"] h4, html[lang="ar"] h5, html[lang="ar"] h6,
+html[lang="ar"] p, html[lang="ar"] span, html[lang="ar"] div, html[lang="ar"] a, html[lang="ar"] li,
+html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3, html[dir="rtl"] h4, html[dir="rtl"] h5, html[dir="rtl"] h6,
+html[dir="rtl"] p, html[dir="rtl"] span, html[dir="rtl"] div, html[dir="rtl"] a, html[dir="rtl"] li {
+  font-family: 'Almarai', 'Rubik', 'IBM Plex Sans Arabic', sans-serif !important;
+}
