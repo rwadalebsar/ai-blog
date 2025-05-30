@@ -32,7 +32,7 @@ exclude_from_localization: ["javascript", "images", "css", "assets"]
 # Arabic/RTL specific settings
 rtl_support: true
 arabic_font: "Amiri, Scheherazade New, Reem Kufi, serif"
-css_version: "v2.3" # For cache busting
+css_version: "v3.0" # For cache busting - Modern footer update
 
 # Language-specific titles and descriptions
 title_en: "AI Blog"
