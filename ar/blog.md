@@ -4,6 +4,7 @@ lang: ar
 title: المدونة
 title_ar: المدونة
 description_ar: أحدث الرؤى والدروس والمناقشات حول الذكاء الاصطناعي والتعلم الآلي
+permalink: /ar/blog/
 ---
 
 # أحدث المنشورات
@@ -27,17 +28,17 @@ description_ar: أحدث الرؤى والدروس والمناقشات حول �
             </span>
           {% endif %}
         </div>
-        
+
         <h2 class="post-title">
           <a href="{{ post.url | relative_url }}">{{ post.title_ar | default: post.title }}</a>
         </h2>
-        
+
         {% if post.excerpt %}
           <div class="post-excerpt">
             {{ post.excerpt | strip_html | truncatewords: 30 }}
           </div>
         {% endif %}
-        
+
         <div class="post-footer">
           <a href="{{ post.url | relative_url }}" class="read-more">اقرأ المزيد ←</a>
           {% if post.tags.size > 0 %}
@@ -198,23 +199,23 @@ description_ar: أحدث الرؤى والدروس والمناقشات حول �
   .post-card {
     padding: 1.5rem;
   }
-  
+
   .post-footer {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
   }
-  
+
   [dir="rtl"] .post-footer {
     align-items: flex-end;
   }
-  
+
   .post-meta {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
   }
-  
+
   [dir="rtl"] .post-meta {
     align-items: flex-end;
   }

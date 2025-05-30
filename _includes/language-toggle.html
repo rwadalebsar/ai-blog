@@ -18,13 +18,13 @@
     {% if current_url == '/' %}
       {% assign ar_url = '/ar/' %}
     {% elsif current_url == '/about/' or current_url == '/about' %}
-      {% assign ar_url = '/ar/about' %}
+      {% assign ar_url = '/ar/about/' %}
     {% elsif current_url == '/blog/' or current_url == '/blog' %}
-      {% assign ar_url = '/ar/blog' %}
+      {% assign ar_url = '/ar/blog/' %}
     {% elsif current_url == '/resources/' or current_url == '/resources' %}
-      {% assign ar_url = '/ar/resources' %}
+      {% assign ar_url = '/ar/resources/' %}
     {% elsif current_url == '/contact/' or current_url == '/contact' %}
-      {% assign ar_url = '/ar/contact' %}
+      {% assign ar_url = '/ar/contact/' %}
     {% else %}
       {% assign ar_url = '/ar' | append: current_url %}
     {% endif %}
