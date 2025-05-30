@@ -612,8 +612,8 @@ html {
     position: fixed;
     top: auto;
     bottom: 2rem; /* Position at bottom of screen */
-    right: 1rem; /* Bottom-right corner */
-    left: auto;
+    left: 1rem; /* Default: bottom-left corner */
+    right: auto;
     transform: none;
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
@@ -622,9 +622,10 @@ html {
     box-shadow: var(--shadow-lg); /* Stronger shadow for floating effect */
   }
 
+  /* On Arabic pages, move English toggle to bottom-right */
   [dir="rtl"] .language-toggle {
-    right: auto;
-    left: 1rem; /* Bottom-left corner for RTL */
+    left: auto;
+    right: 1rem; /* Bottom-right corner when on Arabic page */
   }
 }
 
